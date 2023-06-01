@@ -9,16 +9,28 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
+      # strapi settings
+      PUBLIC_URL: ${PUBLIC_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      NODE_ENV: ${NODE_ENV}
+      # database settings
       DATABASE_CLIENT: "postgres"
       DATABASE_HOST: strapiDB
       DATABASE_PORT: 5432
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      APP_KEYS: ${APP_KEYS}
-      NODE_ENV: ${NODE_ENV}
+      # smtp settings
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      # emaii settings
+      EMAIL_FROM: ${EMAIL_FROM}
+      REPLY_TO: ${REPLY_TO}
+
     volumes:
       - ./app/config/:/opt/app/config
       - ./app/src/:/opt/app/src
@@ -37,9 +49,9 @@ services:
     image: postgres
     container_name: "strapi-db"
     environment:
-      POSTGRES_DB: strapi_db
-      POSTGRES_USER: strapi_sr
-      POSTGRES_PASSWORD: strapi2023!
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
