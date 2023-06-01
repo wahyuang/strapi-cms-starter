@@ -1,0 +1,56 @@
+version: "3"
+services:
+  strapi:
+    container_name: "strapi-cms"
+    image: strapi:latest
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_CLIENT: "postgres"
+      DATABASE_HOST: strapiDB
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./app/config/:/opt/app/config
+      - ./app/src/:/opt/app/src
+      - ./app/package.json:/opt/package.json
+      - ./app/yarn.lock:/opt/yarn.lock
+      - ./app/.env:/opt/app/.env
+      - ./app/public/uploads/:/opt/app/public/uploads
+    ports:
+      - 1337:1337
+    networks:
+      - strapi
+    depends_on:
+      - strapiDB
+
+  strapiDB:
+    image: postgres
+    container_name: "strapi-db"
+    environment:
+      POSTGRES_DB: strapi_db
+      POSTGRES_USER: strapi_sr
+      POSTGRES_PASSWORD: strapi2023!
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./db/:/var/lib/postgresql/data"
+    networks:
+      - strapi
+
+volumes:
+  strapi-db:
+
+networks:
+  strapi:
+    name: StrapiCMS
+    driver: bridge
