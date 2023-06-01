@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_blocks_basic_texts",
+  "info": {
+    "displayName": "basic text"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "custom"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "cta_button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "items.button"
+    }
+  }
+}

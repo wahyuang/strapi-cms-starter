@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_items_buttons",
+  "info": {
+    "displayName": "button"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "new_window": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
