@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_blocks_media_texts",
+  "info": {
+    "displayName": "media text",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "custom"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "media_image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "image_position": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "left"
+      ],
+      "default": "left"
+    },
+    "cta_button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "items.button"
+    }
+  }
+}

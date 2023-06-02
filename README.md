@@ -42,23 +42,30 @@ To install and set up the Strapi CMS instance with Docker and PostgreSQL, follow
 2. Create a `.env` file and set the following environment variables:
 
    ```shell
-    NODE_ENV=development
+   NODE_ENV=development
 
-    ## app keys and secret settings
-    JWT_SECRET=your_jwt_secret
-    ADMIN_JWT_SECRET=your_admin_secret
-    APP_KEYS=your_app_key
+   ## app keys and secret settings
+   PUBLIC_URL=http://localhost:1337
+   JWT_SECRET=your_jwt_secret
+   ADMIN_JWT_SECRET=your_admin_secret
+   APP_KEYS=your_app_key
 
-    ## database settings
-    DATABASE_NAME=strapi_db
-    DATABASE_USERNAME=strapi_user
-    DATABASE_PASSWORD=your_password
+   ## database settings
+   DATABASE_NAME=strapi_db
+   DATABASE_USERNAME=strapi_user
+   DATABASE_PASSWORD=your_password
+
+   ## smtp settings
+   SMTP_HOST=your_smtp_host
+   SMTP_PORT=1234
+   SMTP_USER=your_smtp_user
+   SMTP_PASSWORD=your_smtp_password
    ```
 
    Tips: you can generate your secret by run the code below on your terminal.
 
-   ```
-    openssl rand -base64 32
+   ```shell
+   openssl rand -base64 32
    ```
 
 3. Run docker-compose for development:

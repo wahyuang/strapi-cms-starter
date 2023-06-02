@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_newsletters",
+  "info": {
+    "displayName": "newsletter"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "custom"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}
