@@ -8,7 +8,6 @@ services:
       dockerfile: Dockerfile.dev
     restart: unless-stopped
     environment:
-      # strapi settings
       PUBLIC_URL: ${PUBLIC_URL}
       JWT_SECRET: ${JWT_SECRET}
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
@@ -16,28 +15,23 @@ services:
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
       NODE_ENV: ${NODE_ENV}
-      # database settings
       DATABASE_CLIENT: "postgres"
       DATABASE_HOST: db
       DATABASE_PORT: 5432
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      # smtp settings
       SMTP_HOST: ${SMTP_HOST}
       SMTP_PORT: ${SMTP_PORT}
       SMTP_USER: ${SMTP_USER}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
-      # emaii settings
       EMAIL_FROM: ${EMAIL_FROM}
       REPLY_TO: ${REPLY_TO}
-
     volumes:
       - ./app/config/:/opt/app/config
       - ./app/src/:/opt/app/src
       - ./app/package.json:/opt/package.json
       - ./app/yarn.lock:/opt/yarn.lock
-      # - app/.env:/opt/app/.env
       - ./app/public/uploads/:/opt/app/public/uploads
     ports:
       - 1337:1337
