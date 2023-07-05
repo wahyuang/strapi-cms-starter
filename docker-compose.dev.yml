@@ -3,7 +3,6 @@ version: "3"
 services:
   strapi:
     container_name: "strapi-cms"
-    image: strapi:latest
     build:
       context: ./app
       dockerfile: Dockerfile.dev
