@@ -7,7 +7,6 @@ services:
       context: ./app
       dockerfile: Dockerfile.dev
     restart: unless-stopped
-    env_file: .env
     environment:
       # strapi settings
       PUBLIC_URL: ${PUBLIC_URL}
