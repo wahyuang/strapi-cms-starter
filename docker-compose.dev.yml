@@ -8,6 +8,12 @@ services:
       dockerfile: Dockerfile.dev
     restart: unless-stopped
     env_file: .env
+    volumes:
+      - pxcookie-config:/opt/app/config
+      - pxcookie-src:/opt/app/src
+      - pxcookie-package-json:/opt/package.json
+      - pxcookie-yarn-lock:/opt/yarn.lock
+      - pxcookie-uploads:/opt/app/public/uploads
     ports:
       - 1337:1337
     networks:
@@ -28,6 +34,11 @@ services:
 
 volumes:
   pxcookie-db:
+  pxcookie-config:
+  pxcookie-src:
+  pxcookie-package-json:
+  pxcookie-yarn-lock:
+  pxcookie-uploads:
 
 networks:
   strapi:
