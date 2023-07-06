@@ -37,7 +37,15 @@ volumes:
   pxcookie-config:
   pxcookie-src:
   pxcookie-package-json:
+    driver_opts:
+      type: none
+      device: /root/mycms/app/package.json
+      o: bind
   pxcookie-yarn-lock:
+    driver_opts:
+      type: none
+      device: /root/mycms/app/yarn.lock
+      o: bind
   pxcookie-uploads:
 
 networks:
