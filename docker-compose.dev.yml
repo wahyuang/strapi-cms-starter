@@ -27,12 +27,6 @@ services:
       SMTP_PASSWORD: ${SMTP_PASSWORD}
       EMAIL_FROM: ${EMAIL_FROM}
       REPLY_TO: ${REPLY_TO}
-    # volumes:
-      # - ./app/config/:/opt/app/config
-      # - ./app/src/:/opt/app/src
-      # - ./app/package.json:/opt/package.json
-      # - ./app/yarn.lock:/opt/yarn.lock
-      # - ./app/public/uploads/:/opt/app/public/uploads
     ports:
       - 1337:1337
     networks:
@@ -49,13 +43,8 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
       - 5555:5432
-    # volumes:
-      # - ./db:/var/lib/postgresql/data
     networks:
       - strapi
-
-# volumes:
-  # strapi-db:
 
 networks:
   strapi:
