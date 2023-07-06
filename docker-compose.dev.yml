@@ -8,26 +8,6 @@ services:
       dockerfile: Dockerfile.dev
     restart: unless-stopped
     env_file: .env
-    environment:
-      PUBLIC_URL: ${PUBLIC_URL}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      APP_KEYS: ${APP_KEYS}
-      API_TOKEN_SALT: ${API_TOKEN_SALT}
-      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
-      NODE_ENV: ${NODE_ENV}
-      DATABASE_CLIENT: "postgres"
-      DATABASE_HOST: db
-      DATABASE_PORT: 5432
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      SMTP_HOST: ${SMTP_HOST}
-      SMTP_PORT: ${SMTP_PORT}
-      SMTP_USER: ${SMTP_USER}
-      SMTP_PASSWORD: ${SMTP_PASSWORD}
-      EMAIL_FROM: ${EMAIL_FROM}
-      REPLY_TO: ${REPLY_TO}
     ports:
       - 1337:1337
     networks:
@@ -39,10 +19,6 @@ services:
     image: postgres
     container_name: "strapi-db"
     env_file: .env
-    environment:
-      POSTGRES_DB: ${DATABASE_NAME}
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
       - 5555:5432
     networks:
