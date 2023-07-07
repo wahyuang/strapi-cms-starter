@@ -11,8 +11,6 @@ services:
     volumes:
       - pxcookie-config:/opt/app/config
       - pxcookie-src:/opt/app/src
-      - pxcookie-package-json:/opt/package.json
-      - pxcookie-yarn-lock:/opt/yarn.lock
       - pxcookie-uploads:/opt/app/public/uploads
     ports:
       - 1337:1337
@@ -34,19 +32,25 @@ services:
 
 volumes:
   pxcookie-db:
-  pxcookie-config:
-  pxcookie-src:
-  pxcookie-package-json:
     driver_opts:
       type: none
-      device: /root/mycms/app/package.json
+      device: /root/mycms/db/
       o: bind
-  pxcookie-yarn-lock:
+  pxcookie-config:
     driver_opts:
       type: none
-      device: /root/mycms/app/yarn.lock
+      device: /root/mycms/app/config/
+      o: bind
+  pxcookie-src:
+    driver_opts:
+      type: none
+      device: /root/mycms/app/src/
       o: bind
   pxcookie-uploads:
+    driver_opts:
+      type: none
+      device: /root/mycms/app/public/uploads/
+      o: bind
 
 networks:
   strapi:
